@@ -14,5 +14,6 @@ jobs:
         server: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-        server-dir: ./public_html/
+        server-dir: /home/u189758001/domains/buahku.id/public_html/
+
 
