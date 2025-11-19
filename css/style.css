@@ -86,7 +86,7 @@ body {
   min-height: 100vh;
   display: flex;
   align-items: center;
-  background-image: url("../img/header-bg.JPG");
+  background-image: url("../img/header-bg.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -409,30 +409,29 @@ footer .credit a {
   }
 }
 .row .content {
-    padding: 0;
-  }
+  padding: 0;
+}
 
-  .about .row .content h3 {
-    margin-top: 1rem;
-    font-size: 1.6rem;
-  }
+.about .row .content h3 {
+  margin-top: 1rem;
+  font-size: 1.6rem;
+}
 
-  .menu p {
-    font-size: 1.2rem;
-  }
+.menu p {
+  font-size: 1.2rem;
+}
 
-  .contact .row {
-    flex-wrap: wrap;
-  }
+.contact .row {
+  flex-wrap: wrap;
+}
 
-  .contact .row .map {
-    height: 30rem;
-  }
+.contact .row .map {
+  height: 30rem;
+}
 
-  .contact .row form {
-    padding-top: 0;
-  }
-
+.contact .row form {
+  padding-top: 0;
+}
 
 /* Mobile Phone */
 @media (max-width: 450px) {
