@@ -40,13 +40,7 @@
       </div>
 
       <div class="navbar-extra">
-        <a href="#" id="search-button">
-          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round"
-                stroke-linejoin="round">
-                <use href="img/feather.svg#search"/>              
-              </svg>
-        </a>
+        <a href="#" id="search-button"><i data-feather="search"></i></a>
         <a href="#" id="shopping-cart-button">
           <i data-feather="shopping-cart"></i>
           <span class="quantity-badge" x-show="$store.cart.quantity" x-text="$store.cart.quantity"></span>
@@ -57,13 +51,7 @@
       <!-- Search Form Start -->
        <div class="search-form">
         <input type="search" id="searchbox" placeholder="search here...">
-        <label for="search-box">
-          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round"
-                stroke-linejoin="round">
-                <use href="img/feather.svg#search"/>              
-              </svg>
-        </label>
+        <label for="search-box"><i data-feather="search"></i></label>
        </div>
       <!-- Search Form End -->
 
@@ -140,65 +128,6 @@
       </section>
      <!-- About Section End -->
 
-     <!-- Menu Section Start -->
-      <section id="menu" class="menu">
-       <h2><span>Menu</span> Kami</h2>
-       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam labore reprehenderit ad alias suscipit dignissimos?</p> 
-       <div class="row">
-        <div class="menu-card">
-          <img src="img/menu/1M.jpg" alt="Apel" class="menu-card-img">
-          <h3 class="menu-card-title">- Apel -</h3>
-          <p>IDR 15K/Kg</p>
-        </div>
-        <div class="menu-card">
-          <img src="img/menu/1M.jpg" alt="Apel" class="menu-card-img">
-          <h3 class="menu-card-title">- Apel -</h3>
-          <p>IDR 15K/Kg</p>
-        </div>
-        <div class="menu-card">
-          <img src="img/menu/1M.jpg" alt="Apel" class="menu-card-img">
-          <h3 class="menu-card-title">- Apel -</h3>
-          <p>IDR 15K/Kg</p>
-        </div>
-        <div class="menu-card">
-          <img src="img/menu/1M.jpg" alt="Apel" class="menu-card-img">
-          <h3 class="menu-card-title">- Apel -</h3>
-          <p>IDR 15K/Kg</p>
-        </div>
-        <div class="menu-card">
-          <img src="img/menu/1M.jpg" alt="Apel" class="menu-card-img">
-          <h3 class="menu-card-title">- Apel -</h3>
-          <p>IDR 15K/Kg</p>
-        </div>
-        <div class="menu-card">
-          <img src="img/menu/1M.jpg" alt="Apel" class="menu-card-img">
-          <h3 class="menu-card-title">- Apel -</h3>
-          <p>IDR 15K/Kg</p>
-        </div>
-        <div class="menu-card">
-          <img src="img/menu/1M.jpg" alt="Apel" class="menu-card-img">
-          <h3 class="menu-card-title">- Apel -</h3>
-          <p>IDR 15K/Kg</p>
-        </div>
-        <div class="menu-card">
-          <img src="img/menu/1M.jpg" alt="Apel" class="menu-card-img">
-          <h3 class="menu-card-title">- Apel -</h3>
-          <p>IDR 15K/Kg</p>
-        </div>
-        <div class="menu-card">
-          <img src="img/menu/1M.jpg" alt="Apel" class="menu-card-img">
-          <h3 class="menu-card-title">- Apel -</h3>
-          <p>IDR 15K/Kg</p>
-        </div>
-        <div class="menu-card">
-          <img src="img/menu/1M.jpg" alt="Apel" class="menu-card-img">
-          <h3 class="menu-card-title">- Apel -</h3>
-          <p>IDR 15K/Kg</p>
-        </div>
-       </div>
-      </section>
-     <!-- Menu Section End -->
-
      <!-- Product Section Start -->
       <section class="products" id="products" x-data="products">
         <h2><span>Produk Unggulan</span> Kami</h2>
@@ -206,7 +135,7 @@
 
       <div class="row">
         <template x-for="(item, index) in items" x-key="index" >
-        <div class="product-card">
+      <div class="product-card">
           <div class="product-icons">
             <a href="#" @click.prevent="$store.cart.add(item)">
               <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
@@ -216,9 +145,9 @@
               </svg>
             </a>
           </div>
-          <div class="product-image">
+        <div class="product-image">
             <img :src="`img/products/${item.img}`" :alt="item.name">
-          </div>
+          
           <div class="product-content">
             <h3 x-text="item.name"></h3>
             <div class="product-stars">
@@ -231,6 +160,7 @@
             <div class="product-price"><span x-text="rupiah(item.price)"></span></div>
           </div>
         </div>
+      </div>
         </template>
       </div>
 
