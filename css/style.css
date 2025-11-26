@@ -583,37 +583,6 @@ footer .credit a {
   }
 }
 
-.modal-container .close-icon {
-  position: absolute;
-  right: 1rem;
-}
-
-.modal-content {
-  display: flex;
-  flex-wrap: nowrap;
-}
-
-.modal-content img{
-  height: 20rem;
-  margin-right: 2rem;
-  margin-bottom: 2rem;
-}
-
-.modal-content p {
-  font-size: 1.2rem;
-  line-height: 1.8rem;
-  margin-top: 1.2rem;
-}
-
-.modal-content a {
-  display: flex;
-  gap: 1rem;
-  width: 12rem;
-  background-color: var(--primary);
-  color: #fff;
-  margin-top: 1rem;
-  padding: 1rem 1.6rem;
-}
 
 /* media queris */
 
