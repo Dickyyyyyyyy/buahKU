@@ -45,30 +45,3 @@ document.addEventListener("click", function (e) {
   }
 });
 
-//Modal Box
-const itemDetailModal = document.querySelector('#item-detail-modal');
-const itemDetailButtons = document.querySelectorAll('.item-detail-button');
-
-itemDetailButtons.forEach ((btn) => {
-  
-  btn.onclick = (e) => {
-    itemDetailModal.style.display = 'flex';
-    e.preventDefault();
-  };
-
-});
-
-
-//Click Tombol Close
-document.querySelector('.modal .close-icon').onclick = (e) => {
-  itemDetailModal.style.display = 'none';
-  e.preventDefault();
-}
-
-//Klik di luar modal
-const modal = document.querySelector('#item-detail-modal');
-window.onclick = (e) => {
-  if (e.target === modal) {
-    modal.style.display = 'none';
-  }
-};

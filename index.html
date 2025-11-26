@@ -57,7 +57,7 @@
 
       <!-- Shopping Cart Start -->
        <div class="shopping-cart">
-        <template x-for="(item, index) in $store.cart.items" :x-keys="index">
+        <template x-for="(item, index) in $store.cart.items" x-keys="index">
         <div class="cart-item">
           <img :src="`img/products/${item.img}`" :alt="item.name">
           <div class="item-detail">
@@ -135,7 +135,7 @@
         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut odit nulla quod?</p>
 
       <div class="row">
-        <template x-for="(item, index) in items" :x-key="index" >
+        <template x-for="(item, index) in items" x-key="index" >
         <div class="product-card">
           <div class="product-icons">
             <a href="#" @click.prevent="$store.cart.add(item)">
@@ -220,31 +220,6 @@
       </footer>
 
      <!-- Footer End -->
-
-     <!-- Modal Box Detail Start -->
-      <div class="modal" id="item-detail-modal">
-        <div class="modal-container">
-          <a href="#" class="close-icon"><i data-feather="x"></i></a>
-          <div class="modal-content">
-            <img src="img/products/apel.jpg" alt="product 1">
-            <div class="product-content">
-              <h3>Product 1</h3>
-              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil cum, sunt eaque rerum asperiores aliquam nulla neque eius doloribus enim. Cum quia deserunt iusto molestiae!</p>
-              <div class="product-stars">
-              <i data-feather="star" class="star-full"></i>
-              <i data-feather="star" class="star-full"></i>
-              <i data-feather="star" class="star-full"></i>
-              <i data-feather="star" class="star-full"></i>
-              <i data-feather="star" class="star-full"></i>
-            </div>
-            <div class="product-price">IDR 29K <span>IDR 34K</span></div>
-            <a href="#"><i data-feather="shopping-cart"></i> <span> add to cart </span></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-     <!-- Modal Box Detail End -->
 
      <script src="src/app.js"></script>
 
