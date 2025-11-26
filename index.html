@@ -1,226 +1,323 @@
 <!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BuahKU</title>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BuahKU</title>
 
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- Feather Icons -->
-  <script src="https://unpkg.com/feather-icons"></script>
+    <!-- Feather Icon -->
+    <script src="https://unpkg.com/feather-icons"></script>
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="./css/style.css" />
+    <!-- My Style  -->
+    <link rel="stylesheet" href="css/style.css">
 
-  <!-- Alpine JS -->
-  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-</head>
+    <!-- Alpine JS -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
-<body>
 
-<!-- Navbar -->
-<nav class="navbar" x-data>
-  <a href="#home" class="navbar-logo">BuahKU</a>
+  </head>
 
-  <div class="navbar-nav">
-    <a href="#home">Home</a>
-    <a href="#about">Tentang Kami</a>
-    <a href="#menu">Menu</a>
-    <a href="#products">Produk</a>
-    <a href="#contact">Kontak</a>
-  </div>
+  <body>
 
-  <div class="navbar-extra">
-    <a href="#" id="search-button"><i data-feather="search"></i></a>
-    <a href="#" id="shopping-cart-button">
-      <i data-feather="shopping-cart"></i>
-      <span class="quantity-badge" x-show="$store.cart?.quantity" x-text="$store.cart?.quantity"></span>
-    </a>
-    <a href="#" id="fruit-menu"><i data-feather="menu"></i></a>
-  </div>
+    <!-- Navbar Start -->
+    <nav class="navbar" x-data>
+      <a href="#" class="navbar-logo">BuahKU</a>
 
-  <!-- Search Form -->
-  <div class="search-form" id="search-form">
-    <input type="search" id="searchbox" placeholder="Search here...">
-    <label for="searchbox"><i data-feather="search"></i></label>
-  </div>
+      <div class="navbar-nav">
+        <a href="#home">Home</a>
+        <a href="#about">Tentang Kami</a>
+        <a href="#menu">Menu</a>
+        <a href="#products">Produk</a>
+        <a href="#contact">Kontak</a>
+      </div>
 
-  <!-- Shopping Cart -->
-  <div class="shopping-cart" x-data>
-    <template x-for="(item, index) in ($store.cart?.items || [])" :key="index">
-      <div class="cart-item">
-        <img :src="'img/products/' + item.img" :alt="item.name">
-        <div class="item-detail">
-          <h3 x-text="item.name"></h3>
-          <div class="item-price">
-            <span x-text="rupiah(item.price)"></span> ×
-            <button type="button" @click="$store.cart.remove(item.id)">−</button>
-            <span x-text="item.quantity"></span>
-            <button type="button" @click="$store.cart.add(item)">+</button> =
-            <span x-text="rupiah(item.total)"></span>
+      <div class="navbar-extra">
+        <a href="#" id="search-button"><i data-feather="search"></i></a>
+        <a href="#" id="shopping-cart-button">
+          <i data-feather="shopping-cart"></i>
+          <span class="quantity-badge" x-show="$store.cart.quantity" x-text="$store.cart.quantity"></span>
+        </a>
+        <a href="#" id="fruit-menu"><i data-feather="menu"></i></a>
+      </div>
+      
+      <!-- Search Form Start -->
+       <div class="search-form">
+        <input type="search" id="searchbox" placeholder="search here...">
+        <label for="search-box"><i data-feather="search"></i></label>
+       </div>
+      <!-- Search Form End -->
+
+      <!-- Shopping Cart Start -->
+       <div class="shopping-cart">
+        <template x-for="(item, index) in $store.cart.items" :x-keys="index">
+        <div class="cart-item">
+          <img :src="`img/products/${item.img}`" :alt="item.name">
+          <div class="item-detail">
+            <h3 x-text="item.name"></h3>
+            <div class="item-price">
+              <span x-text="rupiah(item.price)"></span>&times;
+              <button id="remove" @click="$store.cart.remove(item.id)">&minus;</button>
+              <span x-text="item.quantity"></span>
+              <button id="add" @click="$store.cart.add(item)">&plus;</button>&equals;
+              <span x-text="rupiah(item.total)"></span>
+            </div>
+          </div>
+        </div>        
+        </template>
+        <h4 x-show="!$store.cart.items.length" style="margin-top: 1rem;">Cart is Empty</h4>
+        <h4 x-show="$store.cart.items.length">Total : <span x-text="rupiah($store.cart.total)"></span></h4>
+
+        <div class="form-container" x-show="$store.cart.items.length">
+          <form action="" id="checkoutForm">
+            <h5>Customer Detail</h5>
+
+            <label for="name">
+              <span>Name</span>
+              <input type="text" name="name" id="name">
+            </label>
+
+            <label for="email">
+              <span>Email</span>
+              <input type="email" name="email" id="email">
+            </label>
+
+            <label for="phone">
+              <span>Phone</span>
+              <input type="number" name="phone" id="phone" autocomplete="off">
+            </label>
+
+            <button class="checkout-button" type="submit" id="checkout-button" value="checkout">Checkout</button>
+          </form>
+        </div>
+       </div>
+      <!-- Shopping Cart End -->
+
+
+    </nav>
+    <!-- Navbar End -->
+
+     <!--Hero Section Start-->
+     <section class="hero" id="home">
+      <main class="content">
+        <h1><span>Buah</span> Segar Untuk Kita Semua </h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem possimus aliquid totam ex nisi quaerat porro rerum praesentium, sapiente maxime. Impedit autem eaque consectetur quibusdam molestiae quidem vitae sequi maiores?</p>
+          </main>
+     </section>
+     <!--Hero Section End-->
+
+     <!-- About Section Start -->
+      <section id="about" class="about">
+        <h2><span>Tentang</span> Kami</h2>
+        <div class="row">
+          <div class="about-img">
+         <img src="img/tentang-kami.jpg" alt="Tentang Kami">
+        </div>
+        <div class="content">
+          <h3> Kenapa memilih buah kami</h3>
+          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minima non perferendis quod? Maxime, quo beatae!</p>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum dolorum fugit voluptates, at obcaecati a?</p>
+        </div>
+      </section>
+     <!-- About Section End -->
+
+     <!-- Menu Section Start -->
+      <section id="menu" class="menu">
+       <h2><span>Menu</span> Kami</h2>
+       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam labore reprehenderit ad alias suscipit dignissimos?</p> 
+       <div class="row">
+        <div class="menu-card">
+          <img src="img/menu/1M.jpg" alt="Apel" class="menu-card-img">
+          <h3 class="menu-card-title">- Apel -</h3>
+          <p>IDR 15K/Kg</p>
+        </div>
+        <div class="menu-card">
+          <img src="img/menu/1M.jpg" alt="Apel" class="menu-card-img">
+          <h3 class="menu-card-title">- Apel -</h3>
+          <p>IDR 15K/Kg</p>
+        </div>
+        <div class="menu-card">
+          <img src="img/menu/1M.jpg" alt="Apel" class="menu-card-img">
+          <h3 class="menu-card-title">- Apel -</h3>
+          <p>IDR 15K/Kg</p>
+        </div>
+        <div class="menu-card">
+          <img src="img/menu/1M.jpg" alt="Apel" class="menu-card-img">
+          <h3 class="menu-card-title">- Apel -</h3>
+          <p>IDR 15K/Kg</p>
+        </div>
+        <div class="menu-card">
+          <img src="img/menu/1M.jpg" alt="Apel" class="menu-card-img">
+          <h3 class="menu-card-title">- Apel -</h3>
+          <p>IDR 15K/Kg</p>
+        </div>
+        <div class="menu-card">
+          <img src="img/menu/1M.jpg" alt="Apel" class="menu-card-img">
+          <h3 class="menu-card-title">- Apel -</h3>
+          <p>IDR 15K/Kg</p>
+        </div>
+        <div class="menu-card">
+          <img src="img/menu/1M.jpg" alt="Apel" class="menu-card-img">
+          <h3 class="menu-card-title">- Apel -</h3>
+          <p>IDR 15K/Kg</p>
+        </div>
+        <div class="menu-card">
+          <img src="img/menu/1M.jpg" alt="Apel" class="menu-card-img">
+          <h3 class="menu-card-title">- Apel -</h3>
+          <p>IDR 15K/Kg</p>
+        </div>
+        <div class="menu-card">
+          <img src="img/menu/1M.jpg" alt="Apel" class="menu-card-img">
+          <h3 class="menu-card-title">- Apel -</h3>
+          <p>IDR 15K/Kg</p>
+        </div>
+        <div class="menu-card">
+          <img src="img/menu/1M.jpg" alt="Apel" class="menu-card-img">
+          <h3 class="menu-card-title">- Apel -</h3>
+          <p>IDR 15K/Kg</p>
+        </div>
+       </div>
+      </section>
+     <!-- Menu Section End -->
+
+     <!-- Product Section Start -->
+      <section class="products" id="products" x-data="products">
+        <h2><span>Produk Unggulan</span> Kami</h2>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut odit nulla quod?</p>
+
+      <div class="row">
+        <template x-for="(item, index) in items" x-key="index" >
+        <div class="product-card">
+          <div class="product-icons">
+            <a href="#" @click.prevent="$store.cart.add(item)">
+              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round"
+                stroke-linejoin="round">
+                <use href="img/feather.svg#shopping-cart"/>              
+              </svg>
+            </a>
+            <a href="#" class="item-detail-button">
+              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round"
+                stroke-linejoin="round">
+                <use href="img/feather.svg#eye"/>              
+              </svg>
+            </a>
+          </div>
+          <div class="product-image">
+            <img :src="`img/products/${item.img}`" :alt="item.name">
+          </div>
+          <div class="product-content">
+            <h3 x-text="item.name"></h3>
+            <div class="product-stars">
+              <i data-feather="star" class="star-full"></i>
+              <i data-feather="star" class="star-full"></i>
+              <i data-feather="star" class="star-full"></i>
+              <i data-feather="star" class="star-full"></i>
+              <i data-feather="star" class="star-full"></i>
+            </div>
+            <div class="product-price"><span x-text="rupiah(item.price)"></span></div>
+          </div>
+        </div>
+        </template>
+      </div>
+
+      </section>
+
+     <!-- Product Section End-->
+
+     <!-- Contact Section Start -->
+      <section id="contact" class="contact">
+        <h2><span>Kontak</span> Kami</h2>
+       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id, saepe.</p>
+
+       <div class="row">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.0578062716795!2d104.0458816747376!3d1.118720498870558!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31d98921856ddfab%3A0xf9d9fc65ca00c9d!2sPoliteknik%20Negeri%20Batam!5e0!3m2!1sid!2sid!4v1763107940187!5m2!1sid!2sid" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="map"></iframe>
+
+        <form action="">
+          <div class="input-group">
+            <i data-feather="user"></i>
+            <input type="text" 
+            placeholder="nama">
+          </div>
+          <div class="input-group">
+            <i data-feather="mail"></i>
+            <input type="text" 
+            placeholder="email">
+          </div>
+          <div class="input-group">
+            <i data-feather="phone"></i>
+            <input type="text" 
+            placeholder="no hp">
+          </div>
+          <button type="submit" class="btn">kirim pesan</button>
+        </form>
+       </div>
+      </section>
+
+     <!-- Contact Section End -->
+
+     <!-- Footer Start -->
+      <footer>
+        <div class="social">
+          <a href="#"><i data-feather="instagram"></i></a>
+          <a href="#"><i data-feather="facebook"></i></a>
+        </div>
+
+        <div class="links">
+          <a href="#home">Home</a>
+          <a href="#about">Tentang kami</a>
+          <a href="#menu">Menu</a>
+          <a href="#contact">Kontak</a>
+        </div>
+
+        <div class="credit">
+          <p>created by <a href="">Dicky</a>
+          . | &copy; 2025.</p>
+        </div>
+      </footer>
+
+     <!-- Footer End -->
+
+     <!-- Modal Box Detail Start -->
+      <div class="modal" id="item-detail-model">
+        <div class="modal-container">
+          <a href="#" class="close-icon"><i data-feather="x"></i></a>
+          <div class="modal-content">
+            <img src="img/products/apel.jpg" alt="product 1">
+            <div class="product-content">
+              <h3>Product 1</h3>
+              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil cum, sunt eaque rerum asperiores aliquam nulla neque eius doloribus enim. Cum quia deserunt iusto molestiae!</p>
+              <div class="product-stars">
+              <i data-feather="star" class="star-full"></i>
+              <i data-feather="star" class="star-full"></i>
+              <i data-feather="star" class="star-full"></i>
+              <i data-feather="star" class="star-full"></i>
+              <i data-feather="star" class="star-full"></i>
+            </div>
+            <div class="product-price">IDR 29K <span>IDR 34K</span></div>
+            <a href="#"><i data-feather="shopping-cart"></i> <span> add to cart </span></a>
+            </div>
           </div>
         </div>
       </div>
-    </template>
 
-    <h4 x-show="!($store.cart?.items || []).length" style="margin-top: 1rem;">Cart is Empty</h4>
-    <h4 x-show="($store.cart?.items || []).length">Total: <span x-text="rupiah($store.cart.total)"></span></h4>
+     <!-- Modal Box Detail End -->
 
-    <div class="form-container" x-show="($store.cart?.items || []).length">
-      <form id="checkoutForm">
-        <h5>Customer Detail</h5>
+     <script src="src/app.js"></script>
 
-        <label>
-          <span>Name</span>
-          <input type="text" name="name" required />
-        </label>
-
-        <label>
-          <span>Email</span>
-          <input type="email" name="email" required />
-        </label>
-
-        <label>
-          <span>Phone</span>
-          <input type="number" name="phone" required />
-        </label>
-
-        <button class="checkout-button" type="submit">Checkout</button>
-      </form>
-    </div>
-  </div>
-</nav>
-
-<!-- Hero -->
-<section class="hero" id="home">
-  <main class="content">
-    <h1><span>Buah</span> Segar Untuk Kita Semua</h1>
-    <p>Buah segar kualitas terbaik langsung dari petani.</p>
-  </main>
-</section>
-
-<!-- About -->
-<section id="about" class="about">
-  <h2><span>Tentang</span> Kami</h2>
-  <div class="row">
-    <div class="about-img">
-      <img src="./img/tentang-kami.jpg" alt="Tentang Kami">
-    </div>
-    <div class="content">
-      <h3>Kenapa memilih buah kami?</h3>
-      <p>Buah segar, sehat, dan berkualitas tinggi.</p>
-    </div>
-  </div>
-</section>
-
-<!-- Menu -->
-<section id="menu" class="menu">
-  <h2><span>Menu</span> Kami</h2>
-  <p>Pilihan buah segar terbaik kami.</p>
-
-  <div class="row">
-    <div class="menu-card">
-      <img src="./img/menu/1M.jpg" alt="Apel" class="menu-card-img">
-      <h3 class="menu-card-title">Apel</h3>
-      <p>IDR 15K/Kg</p>
-    </div>
-  </div>
-</section>
-
-<!-- Products -->
-<section class="products" id="products" x-data="products">
-  <h2><span>Produk Unggulan</span> Kami</h2>
-  <p>Produk pilihan dengan kualitas terbaik.</p>
-
-  <div class="row">
-    <template x-for="(item, index) in items" :key="index">
-      <div class="product-card">
-        <div class="product-icons">
-          <a href="#" @click.prevent="$store.cart.add(item)">
-            <i data-feather="shopping-cart"></i>
-          </a>
-          <a href="#" class="item-detail-button">
-            <i data-feather="eye"></i>
-          </a>
-        </div>
-
-        <div class="product-image">
-          <img :src="'img/products/' + item.img" :alt="item.name">
-        </div>
-
-        <div class="product-content">
-          <h3 x-text="item.name"></h3>
-          <div class="product-stars">
-            <i data-feather="star"></i>
-            <i data-feather="star"></i>
-            <i data-feather="star"></i>
-            <i data-feather="star"></i>
-            <i data-feather="star"></i>
-          </div>
-          <div class="product-price" x-text="rupiah(item.price)"></div>
-        </div>
-      </div>
-    </template>
-  </div>
-</section>
-
-<!-- Contact -->
-<section id="contact" class="contact">
-  <h2><span>Kontak</span> Kami</h2>
-  <p>Hubungi kami untuk pemesanan.</p>
-
-  <div class="row">
-    <iframe class="map" loading="lazy" allowfullscreen src="https://www.google.com/maps?q=Politeknik%20Negeri%20Batam&output=embed"></iframe>
-
-    <form>
-      <div class="input-group">
-        <i data-feather="user"></i>
-        <input type="text" placeholder="Nama" />
-      </div>
-      <div class="input-group">
-        <i data-feather="mail"></i>
-        <input type="email" placeholder="Email" />
-      </div>
-      <div class="input-group">
-        <i data-feather="phone"></i>
-        <input type="text" placeholder="No HP" />
-      </div>
-      <button type="submit" class="btn">Kirim Pesan</button>
-    </form>
-  </div>
-</section>
-
-<!-- Footer -->
-<footer>
-  <div class="social">
-    <a href="#"><i data-feather="instagram"></i></a>
-    <a href="#"><i data-feather="facebook"></i></a>
-  </div>
-
-  <div class="links">
-    <a href="#home">Home</a>
-    <a href="#about">Tentang Kami</a>
-    <a href="#menu">Menu</a>
-    <a href="#contact">Kontak</a>
-  </div>
-
-  <div class="credit">
-    <p>Created by <a href="#">Dicky</a> | &copy; 2025</p>
-  </div>
-</footer>
-
-<!-- JS -->
-<script src="./src/app.js"></script>
-<script src="./js/script.js"></script>
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    feather.replace();
-  });
-</script>
-
-</body>
+    <!-- Feather Icon -->
+    <script>
+      feather.replace();
+    </script>
+    <!-- my javascript -->
+    <script src="js/script.js"></script>
+  </body>
 </html>
