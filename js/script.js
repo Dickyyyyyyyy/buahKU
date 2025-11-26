@@ -46,7 +46,7 @@ document.addEventListener("click", function (e) {
 });
 
 //Modal Box
-const itemDetailModal = document.querySelector('#item-detail-model');
+const itemDetailModal = document.querySelector('#item-detail-modal');
 const itemDetailButtons = document.querySelectorAll('.item-detail-button');
 
 itemDetailButtons.forEach ((btn) => {
@@ -66,7 +66,7 @@ document.querySelector('.modal .close-icon').onclick = (e) => {
 }
 
 //Klik di luar modal
-const modal = document.querySelector('#item-detail-model');
+const modal = document.querySelector('#item-detail-modal');
 window.onclick = (e) => {
   if (e.target === modal) {
     modal.style.display = 'none';
