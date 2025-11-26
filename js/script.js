@@ -46,7 +46,7 @@ document.addEventListener("click", function (e) {
 });
 
 //Modal Box
-const itemDetailModal = document.querySelector('#item-detail-model');
+const itemDetailModal = document.querySelector('#item-detail-modal');
 const itemDetailButtons = document.querySelectorAll('.item-detail-button');
 
 itemDetailButtons.forEach ((btn) => {
