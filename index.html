@@ -136,33 +136,35 @@
         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut odit nulla quod?</p>
 
       <div class="row">
-        <template x-for="(item, index) in items" :keys="index" >
-        <div class="product-card">
-          <div class="product-icons">
+        <template x-for="(item, index) in items" :key="item.id">
+    <div class="product-card">
+        <div class="product-icons">
             <a href="#" @click.prevent="$store.cart.add(item)">
-              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round"
-                stroke-linejoin="round">
-                <use href="img/feather.svg#shopping-cart"/>              
-              </svg>
+                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                    <use href="img/feather.svg#shopping-cart"/>
+                </svg>
             </a>
-          </div>
-          <div class="product-image">
+        </div>
+        <div class="product-image">
             <img :src="`img/products/${item.img}`" :alt="item.name">
-          </div>
-          <div class="product-content">
+        </div>
+        <div class="product-content">
             <h3 x-text="item.name"></h3>
             <div class="product-stars">
-              <i data-feather="star" class="star-full"></i>
-              <i data-feather="star" class="star-full"></i>
-              <i data-feather="star" class="star-full"></i>
-              <i data-feather="star" class="star-full"></i>
-              <i data-feather="star" class="star-full"></i>
+                <i data-feather="star" class="star-full"></i>
+                <i data-feather="star" class="star-full"></i>
+                <i data-feather="star" class="star-full"></i>
+                <i data-feather="star" class="star-full"></i>
+                <i data-feather="star" class="star-full"></i>
             </div>
-            <div class="product-price"><span x-text="rupiah(item.price)"></span></div>
-          </div>
+            <div class="product-price">
+                <span x-text="rupiah(item.price)"></span>
+            </div>
         </div>
-        </template>
+    </div>
+</template>
+
       </div>
 
       </section>
