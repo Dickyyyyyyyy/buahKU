@@ -78,7 +78,7 @@ document.addEventListener('alpine:init', () => {
 });
 
 //konversi ke rupiah
-window.rupiah = (number) => {
+const rupiah = (number) => {
     return new Intl.NumberFormat('id-ID', {
         style: 'currency',
         currency: 'IDR',
