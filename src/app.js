@@ -41,14 +41,8 @@ document.addEventListener('alpine:init', () => {
         items: [
             { id: 1, name: 'Apel',      price: 20000, img: 'apel.jpg' },
             { id: 2, name: 'Pisang',    price: 18000, img: 'pisang.jpg' },
-            { id: 3, name: 'Anggur',    price: 25000, img: 'anggur.jpg' },
-            { id: 4, name: 'Jeruk',     price: 27000, img: 'jeruk.jpg' },
-            { id: 5, name: 'Kiwi',      price: 32000, img: 'kiwi.jpg' },
-            { id: 6, name: 'Semangka',  price: 21000, img: 'semangka.jpg' },
-            { id: 7, name: 'Mangga',    price: 22000, img: 'mangga.jpg' },
-            { id: 8, name: 'Pepaya',    price: 14000, img: 'pepaya.jpg' },
-            { id: 9, name: 'Stroberi',  price: 39000, img: 'stroberi.jpg' },
-            { id:10, name: 'Alpukat',   price: 28000, img: 'alpukat.jpg' }
+            { id: 3, name: 'Anggur',    price: 25000, img: 'anggur.jpg' }
+            
         ]
     }));
 
