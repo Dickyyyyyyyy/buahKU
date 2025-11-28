@@ -1,3 +1,5 @@
+console.log("APP.JS LOADED");
+
 document.addEventListener('alpine:init', () => {
     Alpine.data('products', () => ({
         items: [
