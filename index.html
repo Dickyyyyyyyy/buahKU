@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BuahKU ini</title>
+    <title>BuahKU</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -58,7 +58,7 @@
 
       <!-- Shopping Cart Start -->
        <div class="shopping-cart">
-        <template x-for="(item, index) in $store.cart.items" x-key="index">
+        <template x-for="(item, index) in $store.cart.items" :key="index">
         <div class="cart-item">
           <img :src="`img/products/${item.img}`" :alt="item.name">
           <div class="item-detail">
@@ -136,7 +136,7 @@
         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut odit nulla quod?</p>
 
       <div class="row">
-        <template x-for="(item, index) in items" x-keys="item.id">
+        <template x-for="(item, index) in items" :key="item.id">
     <div class="product-card">
         <div class="product-icons">
             <a href="#" @click.prevent="$store.cart.add(item)">
