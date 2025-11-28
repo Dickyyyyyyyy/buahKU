@@ -1,4 +1,4 @@
-document.addEventListener('alpine:init', () => {
+document.addEventListener("DOMContentLoaded", () => {
     Alpine.store('cart', {
         items: [],
 
@@ -39,24 +39,20 @@ document.addEventListener('alpine:init', () => {
 
     Alpine.data('products', () => ({
         items: [
-  {id:1, name:'Apel', price:20000, img:'apel.jpg'},
-  {id:2, name:'Pisang', price:18000, img:'apel.jpg'},
-  {id:3, name:'Anggur', price:25000, img:'apel.jpg'},
-  {id:4, name:'Jeruk', price:27000, img:'apel.jpg'},
-  {id:5, name:'Kiwi', price:32000, img:'apel.jpg'},
-  {id:6, name:'Semangka', price:21000, img:'apel.jpg'},
-  {id:7, name:'Mangga', price:22000, img:'apel.jpg'},
-  {id:8, name:'Pepaya', price:14000, img:'apel.jpg'},
-  {id:9, name:'Stroberi', price:39000, img:'apel.jpg'},
-  {id:10, name:'Alpukat', price:21500, img:'apel.jpg'},
-]
+            {id:1, name:'Apel', price:20000, img:'apel.jpg'},
+            {id:2, name:'Pisang', price:18000, img:'pisang.jpg'},
+            {id:3, name:'Jeruk', price:15000, img:'jeruk.jpg'},
+            {id:4, name:'Mangga', price:25000, img:'mangga.jpg'}
+        ]
     }));
 
-    window.rupiah = function (number) {
-        return new Intl.NumberFormat('id-ID', {
-            style: 'currency',
-            currency: 'IDR',
-            minimumFractionDigits: 0
-        }).format(number);
-    }
+    Alpine.start();
 });
+
+window.rupiah = function (number) {
+    return new Intl.NumberFormat('id-ID', {
+        style: 'currency',
+        currency: 'IDR',
+        minimumFractionDigits: 0
+    }).format(number);
+};
