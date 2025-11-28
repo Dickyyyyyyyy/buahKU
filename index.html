@@ -22,16 +22,12 @@
     <!-- Alpine JS -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
-    <script defer src="src/app.js"></script
+    <script src="src/app.js"></script>
 
 
   </head>
 
   <body>
-
-    <div x-data x-init="console.log('Store cart:', $store.cart)">
-    </div>
-
 
     <!-- Navbar Start -->
     <nav class="navbar" x-data>
@@ -71,7 +67,7 @@
               <span x-text="rupiah(item.price)"></span>&times;
               <button id="remove" @click="$store.cart.remove(item.id)">&minus;</button>
               <span x-text="item.quantity"></span>
-              <button id="add" @click="$store.cart.add(item)"</button>
+              <button id="add" @click="$store.cart.add(item)">&plus;</button>&equals;
               <span x-text="rupiah(item.total)"></span>
             </div>
           </div>
