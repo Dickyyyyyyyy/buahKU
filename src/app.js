@@ -40,7 +40,7 @@ document.addEventListener('alpine:init', () => {
     Alpine.data('products', () => ({
         items: [
   {id:1, name:'Apel', price:20000, img:'apel.jpg'},
-  {id:2, name:'Pisang', price:18000, img:'pisang.jpg'},
+  {id:2, name:'Pisang', price:18000, img:'apel.jpg'},
   {id:3, name:'Anggur', price:25000, img:'apel.jpg'},
   {id:4, name:'Jeruk', price:27000, img:'apel.jpg'},
   {id:5, name:'Kiwi', price:32000, img:'apel.jpg'},
