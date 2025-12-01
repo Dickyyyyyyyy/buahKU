@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BuahKU</title>
+    <title>BuahKUU</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -52,13 +52,13 @@
       <!-- Search Form Start -->
        <div class="search-form">
         <input type="search" id="searchbox" placeholder="search here...">
-        <label for="searchbox"><i data-feather="search"></i></label>
+        <label for="search-box"><i data-feather="search"></i></label>
        </div>
       <!-- Search Form End -->
 
       <!-- Shopping Cart Start -->
        <div class="shopping-cart">
-        <template x-for="(item, index) in $store.cart.items" :key="index">
+        <template x-for="(item, index) in $store.cart.items" x-key="index">
         <div class="cart-item">
           <img :src="`img/products/${item.img}`" :alt="item.name">
           <div class="item-detail">
@@ -136,35 +136,33 @@
         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut odit nulla quod?</p>
 
       <div class="row">
-        <template x-for="(item, index) in items" :key="item.id">
-    <div class="product-card">
-        <div class="product-icons">
+        <template x-for="(item, index) in items" x-keys="index" >
+        <div class="product-card">
+          <div class="product-icons">
             <a href="#" @click.prevent="$store.cart.add(item)">
-                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                    <use href="img/feather.svg#shopping-cart"/>
-                </svg>
+              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round"
+                stroke-linejoin="round">
+                <use href="img/feather.svg#shopping-cart"/>              
+              </svg>
             </a>
-        </div>
-        <div class="product-image">
+          </div>
+          <div class="product-image">
             <img :src="`img/products/${item.img}`" :alt="item.name">
-        </div>
-        <div class="product-content">
+          </div>
+          <div class="product-content">
             <h3 x-text="item.name"></h3>
             <div class="product-stars">
-                <i data-feather="star" class="star-full"></i>
-                <i data-feather="star" class="star-full"></i>
-                <i data-feather="star" class="star-full"></i>
-                <i data-feather="star" class="star-full"></i>
-                <i data-feather="star" class="star-full"></i>
+              <i data-feather="star" class="star-full"></i>
+              <i data-feather="star" class="star-full"></i>
+              <i data-feather="star" class="star-full"></i>
+              <i data-feather="star" class="star-full"></i>
+              <i data-feather="star" class="star-full"></i>
             </div>
-            <div class="product-price">
-                <span x-text="rupiah(item.price)"></span>
-            </div>
+            <div class="product-price"><span x-text="rupiah(item.price)"></span></div>
+          </div>
         </div>
-    </div>
-</template>
-
+        </template>
       </div>
 
       </section>
