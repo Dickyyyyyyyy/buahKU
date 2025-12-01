@@ -41,6 +41,7 @@ document.addEventListener('alpine:init', () => {
         items: [
             {id:1, name:'Apel', price:20000, img:'apel.jpg'},
             {id:2, name:'Anggur', price:15000, img:'anggur.jpg'},
+            {id:2, name:'Alpukat', price:17000, img:'alpukat.jpg'},
             {id:3, name:'Pisang', price:18000, img:'pisang.jpg'}
         ]
     }));
