@@ -43,11 +43,11 @@ document.addEventListener('alpine:init', () => {
             {id:2, name:'Anggur', price:25000, img:'anggur.jpg'},
             {id:3, name:'Jeruk', price:27000, img:'jeruk.jpg'},
             {id:4, name:'Kiwi', price:32000, img:'kiwi.jpg'},
-            {id:5, name:'Semangka', price:17000, img:'semangka.jpg'},
-            {id:6, name:'Mangga', price:17000, img:'mangga.jpg'},
-            {id:7, name:'Pepaya', price:17000, img:'pepaya.jpg'},
-            {id:8, name:'Stroberi', price:17000, img:'stroberi.jpg'},
-            {id:9, name:'Alpukat', price:17000, img:'alpukat.jpg'},
+            {id:5, name:'Semangka', price:21000, img:'semangka.jpg'},
+            {id:6, name:'Mangga', price:22000, img:'mangga.jpg'},
+            {id:7, name:'Pepaya', price:14000, img:'pepaya.jpg'},
+            {id:8, name:'Stroberi', price:39000, img:'stroberi.jpg'},
+            {id:9, name:'Alpukat', price:21500, img:'alpukat.jpg'},
             {id:10, name:'Pisang', price:18000, img:'pisang.jpg'}
         ]
     }));
