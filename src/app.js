@@ -52,17 +52,7 @@ document.addEventListener('alpine:init', () => {
         ]
     }));
 
-
-    window.rupiah = function (number) {
-        return new Intl.NumberFormat('id-ID', {
-            style: 'currency',
-            currency: 'IDR',
-            minimumFractionDigits: 0
-        }).format(number);
-    }
-});
-
-form.addEventListener('keyup', function () {
+    form.addEventListener('keyup', function () {
     let allFilled = true;
 
     for (let i = 0; i < form.elements.length; i++) {
@@ -80,3 +70,15 @@ form.addEventListener('keyup', function () {
         checkoutButton.classList.add('disabled');
     }
 });
+
+
+
+    window.rupiah = function (number) {
+        return new Intl.NumberFormat('id-ID', {
+            style: 'currency',
+            currency: 'IDR',
+            minimumFractionDigits: 0
+        }).format(number);
+    }
+});
+
