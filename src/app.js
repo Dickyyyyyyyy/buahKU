@@ -52,26 +52,6 @@ document.addEventListener('alpine:init', () => {
         ]
     }));
 
-    form.addEventListener('keyup', function () {
-    let allFilled = true;
-
-    for (let i = 0; i < form.elements.length; i++) {
-        if (form.elements[i].type !== "submit" && form.elements[i].value.trim() === "") {
-            allFilled = false;
-            break;
-        }
-    }
-
-    if (allFilled) {
-        checkoutButton.disabled = false;
-        checkoutButton.classList.remove('disabled');
-    } else {
-        checkoutButton.disabled = true;
-        checkoutButton.classList.add('disabled');
-    }
-});
-
-
 
     window.rupiah = function (number) {
         return new Intl.NumberFormat('id-ID', {
@@ -81,4 +61,3 @@ document.addEventListener('alpine:init', () => {
         }).format(number);
     }
 });
-
