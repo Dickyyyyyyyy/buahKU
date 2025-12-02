@@ -52,16 +52,7 @@ document.addEventListener('alpine:init', () => {
         ]
     }));
 
-    window.rupiah = function (number) {
-        return new Intl.NumberFormat('id-ID', {
-            style: 'currency',
-            currency: 'IDR',
-            minimumFractionDigits: 0
-        }).format(number);
-    }
-});
-
-//Form Validation
+    //Form Validation
     const checkoutButton = document.querySelector('.checkout-button');
     checkoutButton.disabled = true;
 
@@ -79,3 +70,12 @@ document.addEventListener('alpine:init', () => {
         checkoutButton.classList.remove('disabled');
 
     });
+
+    window.rupiah = function (number) {
+        return new Intl.NumberFormat('id-ID', {
+            style: 'currency',
+            currency: 'IDR',
+            minimumFractionDigits: 0
+        }).format(number);
+    }
+});
