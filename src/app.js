@@ -52,24 +52,6 @@ document.addEventListener('alpine:init', () => {
         ]
     }));
 
-    //Form Validation
-    const checkoutButton = document.querySelector('.checkout-button');
-    checkoutButton.disabled = true;
-
-    const form = document.querySelector('#checkoutForm');
-    form.addEventListener('keyup',function() {
-        for(let i = 0; i < form.elements.length; i++) {
-            if(form.elements[i].value.length !==0){
-                checkoutButton.classList.remove('disabled');
-                checkoutButton.classList.add('disabled');
-            } else {
-                return false;
-            }
-        }
-        checkoutButton.disabled = false;
-        checkoutButton.classList.remove('disabled');
-
-    });
 
     window.rupiah = function (number) {
         return new Intl.NumberFormat('id-ID', {
@@ -77,5 +59,24 @@ document.addEventListener('alpine:init', () => {
             currency: 'IDR',
             minimumFractionDigits: 0
         }).format(number);
+    }
+});
+
+form.addEventListener('keyup', function () {
+    let allFilled = true;
+
+    for (let i = 0; i < form.elements.length; i++) {
+        if (form.elements[i].type !== "submit" && form.elements[i].value.trim() === "") {
+            allFilled = false;
+            break;
+        }
+    }
+
+    if (allFilled) {
+        checkoutButton.disabled = false;
+        checkoutButton.classList.remove('disabled');
+    } else {
+        checkoutButton.disabled = true;
+        checkoutButton.classList.add('disabled');
     }
 });
